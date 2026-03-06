@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Scan & Pay</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6fb;
+text-align:center;
+padding-top:60px;
+}
+
+.qr{
+width:220px;
+margin:30px auto;
+padding:20px;
+background:white;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+button{
+padding:10px 20px;
+background:#0072ff;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Scan & Pay</h2>
+
+<div class="qr">
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=demo@upi" width="200">
+
+<p>Scan using any UPI App</p>
+
+</div>
+
+<button onclick="alert('Opening UPI App...')">Pay</button>
+
+</body>
+</html>

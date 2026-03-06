@@ -1,0 +1,131 @@
+/* Page background */
+
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    /* animated gradient background */
+    
+    background: linear-gradient(-45deg,#ff6a00,#ee0979,#00c6ff,#0072ff);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    }
+    
+    /* background animation */
+    
+    @keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+    }
+    
+    /* login box */
+    
+    .login-box{
+    width:320px;
+    padding:35px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    
+    /* animation */
+    
+    animation: slideUp 1s ease;
+    }
+    
+    /* slide animation */
+    
+    @keyframes slideUp{
+    from{
+    transform:translateY(60px);
+    opacity:0;
+    }
+    
+    to{
+    transform:translateY(0);
+    opacity:1;
+    }
+    }
+    
+    .login-box h2{
+    color:white;
+    margin-bottom:20px;
+    }
+    
+    /* input fields */
+    
+    input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+    outline:none;
+    }
+    
+    /* button style */
+    
+    button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:linear-gradient(45deg,#00f2fe,#4facfe);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+    }
+    
+    /* button hover animation */
+    
+    button:hover{
+    transform:scale(1.05);
+    background:linear-gradient(45deg,#ff512f,#dd2476);
+    }
+    
+    /* menu cards */
+    
+    .menu{
+    display:flex;
+    flex-direction:column;
+    width:320px;
+    margin:auto;
+    }
+    
+    .menu a{
+    background:white;
+    padding:15px;
+    margin:10px;
+    text-align:center;
+    text-decoration:none;
+    border-radius:10px;
+    color:black;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+    }
+    
+    /* hover animation */
+    
+    .menu a:hover{
+    transform:translateY(-5px);
+    background:#f1f1f1;
+    }
+    
+    /* form boxes */
+    
+    .form-box{
+    width:350px;
+    margin:60px auto;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    animation: slideUp 1s ease;
+    }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Payment Success</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f2027;
+background:linear-gradient(to right,#2c5364,#203a43,#0f2027);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+}
+
+.card{
+text-align:center;
+background:white;
+color:black;
+padding:40px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+animation:pop 0.8s ease;
+}
+
+.check{
+font-size:60px;
+color:green;
+}
+
+@keyframes pop{
+from{transform:scale(0.7);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+button{
+margin-top:20px;
+padding:10px 20px;
+border:none;
+background:#0072ff;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="check">✔</div>
+
+<h2>Payment Successful</h2>
+
+<p>Your bill has been paid successfully.</p>
+
+<a href="dashboard.html">
+<button>Back to Dashboard</button>
+</a>
+
+</div>
+
+</body>
+</html>

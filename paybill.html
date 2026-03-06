@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pay Bill - Easy Pay</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="form-box">
+
+<h2>Electricity Bill Payment</h2>
+
+<input type="text" placeholder="Consumer Number" id="consumer">
+
+<input type="number" placeholder="Amount" id="amount">
+
+<select>
+<option>UPI</option>
+<option>Debit Card</option>
+<option>Credit Card</option>
+</select>
+
+<button onclick="payUPI()">Pay Now</button>
+
+</div>
+
+<script>
+
+function payUPI(){
+
+let amount = document.getElementById("amount").value;
+
+let upi = "demo@upi";
+
+let url = "upi://pay?pa=" + upi +
+"&pn=EasyPay" +
+"&am=" + amount +
+"&cu=INR";
+
+window.location.href = url;
+
+setTimeout(function(){
+window.location.href = "success.html";
+},2000);
+
+}
+
+</script>
+
+</body>
+</html>
