@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bill Payment - Login / Signup</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <ul class="flashes" style="list-style-type: none; padding: 0; text-align: center;">
+    {% for category, message in messages %}
+    <li class="{{ category }}"
+      style="color: {{ 'red' if category == 'error' else 'green' }}; font-weight: bold; margin-bottom: 10px;">{{ message
+      }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
+
+  <div class="login-box">
+    <h2>Bill Payment</h2>
+
+    <form method="POST" action="{{ url_for('index') }}" style="width: 100%;">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+
+      <div style="display: flex; gap: 10px; margin-top: 15px; width: 100%;">
+        <button type="submit" name="action" value="login" style="flex: 1;">Login</button>
+        <button type="submit" name="action" value="signup" style="flex: 1; background: #ee0979;">Sign Up</button>
+      </div>
+    </form>
+
+  </div>
+
+</body>
+
+</html>

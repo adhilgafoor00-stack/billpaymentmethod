@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Transaction History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class="flashes" style="list-style-type: none; padding: 0; text-align: center;">
+        {% for category, message in messages %}
+        <li class="{{ category }}"
+            style="color: {{ 'red' if category == 'error' else 'green' }}; font-weight: bold; margin-bottom: 10px;">{{
+            message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <div class="form-box" style="width: 100%; max-width: 600px; margin: 40px auto; padding: 24px;">
+        <h2>Transaction History</h2>
+
+        <table>
+
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction.date.strftime('%d-%m-%Y %H:%M') }}</td>
+                <td>{{ transaction.type }}</td>
+                <td>₹{{ transaction.amount }}</td>
+                <td>{{ transaction.status }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" style="text-align: center;">No transactions found.</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        <div style="text-align: center; margin-top: 24px;">
+            <a href="{{ url_for('dashboard') }}" style="color: #00f2fe; text-decoration: none; font-weight: 500;">Back
+                to Dashboard</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact Support</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class="flashes" style="list-style-type: none; padding: 0; text-align: center;">
+        {% for category, message in messages %}
+        <li class="{{ category }}"
+            style="color: {{ 'red' if category == 'error' else 'green' }}; font-weight: bold; margin-bottom: 10px;">{{
+            message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <div class="form-box">
+
+        <h2>Contact Support</h2>
+
+        <form method="POST" action="{{ url_for('contact') }}" style="width: 100%;">
+            <input type="text" name="name" placeholder="Your Name" required>
+
+            <input type="email" name="email" placeholder="Email" required>
+
+            <textarea name="message" placeholder="Your Message" required></textarea>
+
+            <button type="submit" style="margin-top: 10px;">Send Message</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <a href="{{ url_for('dashboard') }}" style="color: #00f2fe; text-decoration: none;">Back to Dashboard</a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

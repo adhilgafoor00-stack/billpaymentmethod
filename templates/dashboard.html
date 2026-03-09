@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Easy Pay - Personal Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">GPay</div>
+            <div class="profile">{{ user.username[0]|upper }}</div>
+        </div>
+
+        <!-- HERO -->
+        <div class="hero">
+            <p class="tagline">Welcome back,</p>
+            <h1 class="main-title">{{ user.username }}</h1>
+        </div>
+
+        <!-- BALANCE CARD -->
+        <div class="balance-card">
+            <h3>Total Balance</h3>
+            <div class="balance">₹{{ "%.2f"|format(user.balance) }}</div>
+        </div>
+
+        <!-- MENU OPTIONS -->
+        <div class="menu-section">
+            <div class="menu-title">People & Bills</div>
+            <div class="menu">
+                <a href="{{ url_for('paybill', type='electricity') }}">
+                    <div class="icon-circle">⚡</div>
+                    <div class="menu-label">Electricity</div>
+                </a>
+
+                <a href="{{ url_for('recharge') }}">
+                    <div class="icon-circle">📱</div>
+                    <div class="menu-label">Recharge</div>
+                </a>
+
+                <a href="{{ url_for('paybill', type='dth') }}">
+                    <div class="icon-circle">📺</div>
+                    <div class="menu-label">DTH</div>
+                </a>
+
+                <a href="{{ url_for('paybill', type='broadband') }}">
+                    <div class="icon-circle">🌐</div>
+                    <div class="menu-label">Broadband</div>
+                </a>
+
+                <a href="{{ url_for('paybill', type='gas') }}">
+                    <div class="icon-circle">🔥</div>
+                    <div class="menu-label">Gas</div>
+                </a>
+
+                <a href="{{ url_for('paybill', type='water') }}">
+                    <div class="icon-circle">💧</div>
+                    <div class="menu-label">Water</div>
+                </a>
+
+                <a href="{{ url_for('history') }}">
+                    <div class="icon-circle">📜</div>
+                    <div class="menu-label">History</div>
+                </a>
+
+                <a href="{{ url_for('scanpay') }}">
+                    <div class="icon-circle">📷</div>
+                    <div class="menu-label">Scan</div>
+                </a>
+
+                <a href="{{ url_for('contact') }}">
+                    <div class="icon-circle">☎</div>
+                    <div class="menu-label">Support</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="logout-btn">
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

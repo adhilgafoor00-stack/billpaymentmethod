@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pay Bill - Easy Pay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class="flashes" style="list-style-type: none; padding: 0; text-align: center;">
+        {% for category, message in messages %}
+        <li class="{{ category }}"
+            style="color: {{ 'red' if category == 'error' else 'green' }}; font-weight: bold; margin-bottom: 10px;">{{
+            message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <div class="form-box">
+
+        <h2>{{ bill_type }} Payment</h2>
+
+        <form method="POST" action="{{ url_for('paybill', type=request.args.get('type', 'electricity')) }}"
+            style="width: 100%;">
+            {% if request.args.get('type') == 'broadband' %}
+            <input type="text" name="consumer" placeholder="Landline / Broadband Number" required>
+            {% elif request.args.get('type') == 'dth' %}
+            <input type="text" name="consumer" placeholder="Subscriber ID / Smart Card Number" required>
+            {% elif request.args.get('type') == 'gas' %}
+            <input type="text" name="consumer" placeholder="Gas Consumer Number" required>
+            {% elif request.args.get('type') == 'water' %}
+            <input type="text" name="consumer" placeholder="Water Connection Number" required>
+            {% else %}
+            <input type="text" name="consumer" placeholder="Electricity Consumer Number" required>
+            {% endif %}
+
+            <input type="number" name="amount" placeholder="Amount" min="1" required>
+
+            <select name="method">
+                <option>UPI</option>
+                <option>Debit Card</option>
+                <option>Credit Card</option>
+            </select>
+
+            <button type="submit" style="margin-top: 10px;">Pay Now</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <a href="{{ url_for('dashboard') }}" style="color: #00f2fe; text-decoration: none;">Back to Dashboard</a>
+        </div>
+
+    </div>
+
+    <!-- Removed static JS payment script, relying on secure backend now -->
+
+</body>
+
+</html>

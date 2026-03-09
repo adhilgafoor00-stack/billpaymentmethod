@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Scan & Pay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+</head>
+
+<body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class="flashes" style="list-style-type: none; padding: 0; text-align: center;">
+        {% for category, message in messages %}
+        <li class="{{ category }}"
+            style="color: {{ 'red' if category == 'error' else 'green' }}; font-weight: bold; margin-bottom: 10px;">{{
+            message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <div class="form-box">
+        <h2>Scan & Pay</h2>
+
+        <div class="qr" style="margin: 24px auto;">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=demo@upi" width="200"
+                style="border-radius: 12px;">
+            <p style="color: #ffffff; margin-top: 16px;">Scan using any UPI App</p>
+        </div>
+
+        <button
+            onclick="window.location.href='{{ url_for('dashboard') }}'; alert('Payment scanned successfully (Simulation)');">
+            Simulate Pay
+        </button>
+
+        <div style="text-align: center; margin-top: 24px;">
+            <a href="{{ url_for('dashboard') }}" style="color: #00f2fe; text-decoration: none; font-weight: 500;">Back
+                to Dashboard</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
